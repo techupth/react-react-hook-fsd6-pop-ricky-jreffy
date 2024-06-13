@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useBlogPosts } from "../../hooks/useBlogPosts";
+import { useBlogPosts } from "../hooks/useBlogPosts";
 
 function HomePage() {
   const navigate = useNavigate();

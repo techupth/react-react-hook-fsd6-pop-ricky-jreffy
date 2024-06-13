@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { useBlogPosts } from "../../hooks/useBlogPosts";
+import { useBlogPosts } from "../hooks/useBlogPosts";
 import { useEffect } from "react";
 
 function ViewPostPage() {
