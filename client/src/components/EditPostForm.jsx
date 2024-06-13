@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useBlogPosts } from "../../hooks/useBlogPosts";
+import { useBlogPosts } from "../hooks/useBlogPosts";
 import { useNavigate } from "react-router-dom";
 
 function EditPostForm() {
