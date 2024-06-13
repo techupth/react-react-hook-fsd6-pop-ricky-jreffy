@@ -1,6 +1,30 @@
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useBlogPosts } from "../../hooks/useBlogPosts";
+import { useNavigate } from "react-router-dom";
+
 function EditPostForm() {
+  const navigate = useNavigate();
+  const params = useParams();
+  const { getEditPost, submitEditPost } = useBlogPosts();
+  const [editPost, setEditPost] = useState({
+    id: "",
+    title: "",
+    content: "",
+    likes: "",
+  });
+  useEffect(() => {
+    getEditPost(params.id, setEditPost);
+  }, []);
   return (
-    <form className="post-form">
+    <form
+      className="post-form"
+      onSubmit={(e) => {
+        e.preventDefault();
+        submitEditPost(params.id, editPost);
+        navigate("/");
+      }}
+    >
       <h1>Edit Post Form</h1>
       <div className="input-container">
         <label>
@@ -10,7 +34,10 @@ function EditPostForm() {
             name="title"
             type="text"
             placeholder="Enter title here"
-            onChange={() => {}}
+            onChange={(e) => {
+              setEditPost({ ...editPost, title: e.target.value });
+            }}
+            value={editPost.title}
           />
         </label>
       </div>
@@ -22,7 +49,10 @@ function EditPostForm() {
             name="content"
             type="text"
             placeholder="Enter content here"
-            onChange={() => {}}
+            onChange={(e) => {
+              setEditPost({ ...editPost, content: e.target.value });
+            }}
+            value={editPost.content}
             rows={4}
             cols={30}
           />
